@@ -1,22 +1,12 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 
 import ConsoleTag from "@/components/ConsoleTag"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-})
-
 export const metadata: Metadata = {
-  title: "Sahil Sawant",
-  description: "",
+  metadataBase: new URL('https://shlswnt.com'),
+  title: "Sahil Sawant | Engineer",
+  description: "I'm Sahil, an engineer who loves bringing ideas to life with design + code.",
 }
 
 export default function RootLayout({
@@ -25,13 +15,18 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="en">
+      <body>
         <ConsoleTag />
+        <header>
+          <nav>
+            <a href="/">WORK</a> | <a href="/fun">FUN</a> | <a href="/about">ABOUT</a> | <a href="/resume">RESUME</a>
+          </nav>
+        </header>
         {children}
+        <footer>
+          <p>© {new Date().getFullYear()}</p>
+        </footer>
       </body>
     </html>
   )
